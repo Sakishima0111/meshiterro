@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :post_images, only: [:new, :create, :index, :show]
   root to: "homes#top"
   get 'homes/about', as: 'about'
 
@@ -7,4 +6,6 @@ Rails.application.routes.draw do
     devise_scope :user do
     get '/users/sign_out', to: 'devise/sessions#destroy'
     end
+  resources :post_images, only: [:new, :create, :index, :show, :destroy]
+  resources :users, only: [:show, :edit]
 end
